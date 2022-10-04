@@ -1,3 +1,5 @@
+
+
 * {
   margin: 0;
   padding: 0;
@@ -7,9 +9,9 @@
 body {
   background: linear-gradient(
     55.4deg,
-    rgb(231, 91, 11),
-    rgb(12, 181, 232),
-    rgb(252, 61, 157)
+    rgb(128, 56, 120),
+    rgb(177, 9, 206),
+    rgb(84, 29, 156)
   );
   background-size: 400% 400%;
   background-repeat: no-repeat;
@@ -29,13 +31,17 @@ body {
     background-position: 0% 50%;
   }
 }
-
-#title {
-  text-align: center;
-  font-size: 3em;
-  margin: 30px;
+@font-face {
+  font-family: 'Prstart.ttf';
+  src: url(PrStart.ttf);
 }
-
+h1 {
+  text-align: center;
+  font-family: 'Prstart.ttf',monospace, sans-serif;
+  font-size: 40px;
+  margin: 50px;
+  color: antiquewhite;
+}
 #color-palette {
   display: flex;
   flex-wrap: wrap;

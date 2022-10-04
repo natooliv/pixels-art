@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    
     <title>Pixel Art</title>
   </head>
   <body>
@@ -20,16 +21,20 @@
         </section>
       </section>
     </header>
-    
-      <div id="board"> 
+    <div id="board"> 
         <input type="number" min="1" id="board-size">
       </div>
 
-      <button id="clear-board" onclick="limpaColor()" >Limpar</button>
+      <section id="container-button">
+        
+      <button id="button-random-color"> gCores aleatorias</button>
+      </section>
+      
+     <section id="pixel-board"></section>
 
-      <section id="pixel-board"></section>
+  
 
     </main>
-    <script src=".script.js"></script>
+    <script src="./script.js"></script>
   </body>
 </html>

@@ -1,29 +1,35 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <title>Pixels-Art</title>
+    <title>Pixel Art</title>
   </head>
   <body>
-    <div class="container">
-      <!--REQUISITO-1-->
+    <main class="container">
+    <header>
       <h1 id="title">Paleta de Cores</h1>
-      <!--REQUISITO-2-->
-      <section id='color-palette'>
-        <!--REQUISITO-3 e 6 -->
+
+      <section id="color-palette">
         <div id="colorBlack" class="color selected"></div>
           <div id="colorRed" class="color"></div>
-          <div id="colorGreen"class="color"></div>
-          <div id="colorBlue" class="color"></div>>
-          </section>
+          <div id="colorGreen" class="color"></div>
+          <div id="colorBlue" class="color"></div>
+        </section>
+      </section>
+    </header>
+    
+      <div id="board"> 
+        <input type="number" min="1" id="board-size">
+      </div>
 
-        
+      <button id="clear-board" onclick="limpaColor()" >Limpar</button>
 
-      
+      <section id="pixel-board"></section>
+
     </main>
-    <script src="script.js"></script>
+    <script src=".script.js"></script>
   </body>
 </html>

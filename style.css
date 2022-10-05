@@ -13,17 +13,6 @@ body {
   display: flexbox;
 }
 
-@keyframes gradient {
-  0% {
-    background-position: 10% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
 @font-face {
   font-family: 'Prstart.ttf';
   src: url(PrStart.ttf);
@@ -48,15 +37,15 @@ h1 {
 
 
 #clear-board {
-  padding: 5px 10px;
-  font-size: 0.9em;
-  background: none;
+  margin-bottom: 1800%;
+  padding: 12px;
+  font-size: 0.7em;
+  background: white;
   display: block;
   max-width: 100px;
   margin: 10px auto;
-  cursor: pointer;
   border-color: #fff;
-  box-shadow: 1px 2px 5px rgba(255, 255, 255, 0.6);
+  font-family:'Prstart.ttf', sans-serif;
 }
 
 #board {
@@ -98,6 +87,7 @@ h1 {
   border: 1px solid black;
   margin: 2px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+  padding:
 } 
 .container-pixel{
   width: 100%;

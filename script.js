@@ -107,6 +107,12 @@ function putColor() {
     });
   }
 }
+function limparTudo() {
+  const palletCollor = document.querySelectorAll('.pixel');
+  palletCollor.forEach((e) => {
+    e.style.backgroundColor = 'white';
+  });
+}
 
 estilo();
 pintarBu();
@@ -114,3 +120,4 @@ salvarBu();
 quadradoP(5);
 removSele();
 putColor();
+limparTudo();

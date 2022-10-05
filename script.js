@@ -1,9 +1,4 @@
 let salveLocal = [];
-const color = document.querySelectorAll('.color');
-const botao = document.getElementById('clear-board');
-const vqv = document.getElementById('generate-board');
-const inputBtn = document.getElementById('board-size');
-// armazenar e pintar as cores de acordo que a cor primeira seja a preta e trocar dinamicamente.
 
 /*---------------------------------Selecionando Cor e Mudando dinamicamente------------------*/
 
@@ -73,20 +68,49 @@ function salvarBu() {
 estilo();
 pintarBu();
 salvarBu();
-/*-------------------------------------------------------------Quadrinho------------------------------------*/
 
 function quadradoP(num) {
-   const coluna = num;
+  const coluna = num;
   for (let index = 0; index < coluna; index += 1) {
-    const quadradoPI= document.getElementById('pixel-board');
+    const quadradoPI = document.getElementById('pixel-board');
     const linhaCol = document.createElement('div');
     linhaCol.className = 'linha';
     quadradoPI.appendChild(linhaCol);
     for (let index3 = 0; index3 < coluna; index3 += 1) {
       const pixelLin = document.createElement('div');
       pixelLin.className = 'pixel';
-       quadradoPI.appendChild(pixelLin);
+      quadradoPI.appendChild(pixelLin);
     }
   }
 }
+const allcolors = document.getElementsByClassName('color');
+
+function removSele() {
+  for (const select of allcolors) {
+    select.addEventListener('click', function (event) {
+      const selectColor = document.querySelector('.selected');
+      selectColor.classList.remove('selected');
+      event.target.classList.add('selected');
+      console.log(select);
+    });
+  }
+}
+
+function putColor() {
+  const allpixels = document.getElementsByClassName('pixel');
+  for (let index = 0; index < allpixels.length; index += 1) {
+    allpixels[index].addEventListener('click', function (e) {
+      const corAtual = document.querySelector('.selected');
+      console.log(corAtual);
+      const finalColor = window.getComputedStyle(corAtual).backgroundColor;
+      e.target.style.backgroundColor = finalColor;
+    });
+  }
+}
+
+estilo();
+pintarBu();
+salvarBu();
 quadradoP(5);
+removSele();
+putColor();

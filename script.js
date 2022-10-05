@@ -1,4 +1,4 @@
-const salveLocal = [];
+let salveLocal = [];
 
 function coresAleatorias() {
   const r = Math.floor(Math.random() * 255);
@@ -19,27 +19,53 @@ function pintarBu() {
       salveLocal.push(cores[index].style.backgroundColor);
     }
     localStorage.setItem('colorPalette', JSON.stringify(salveLocal));
+    salveLocal = [];
   });
+}
+
+function estilo() {
+  const cores = document.getElementsByClassName('color');
+  for (let index = 0; index < cores.length; index += 1) {
+    cores[index].style.margin = '3px';
+    cores[index].style.border = '1px solid black';
+    cores[index].style.width = '60px';
+    cores[index].style.height = '60px';
+    cores[index].style.boxShadow = '2px 5px 10px rgba(0, 0, 0, 0.6)';
+  }
+}
+
+function pintQuadro() {
+  const cores = document.getElementsByClassName('color');
+  for (let index = 0; index < cores.length; index += 1) {
+    if (index === 0) {
+      cores[index].style.backgroundColor = 'black';
+    } else {
+      cores[index].style.backgroundColor = coresAleatorias();
+    }
+  }
 }
 
 function salvarBu() {
   const cores = document.getElementsByClassName('color');
   const pegaCor = JSON.parse(localStorage.getItem('colorPalette'));
   if (pegaCor === null) {
+    pintQuadro();
     for (let index = 0; index < cores.length; index += 1) {
       salveLocal.push(cores[index].style.backgroundColor);
+      console.log(cores[index].style.backgroundColor);
     }
     localStorage.setItem('colorPalette', JSON.stringify(salveLocal));
+    salveLocal = [];
   } else {
-    console.log('to aqui')
-    for (let index = 0; index < cores.length; index += 1) {
-      cores[index].style.backgroundColor = pegaCor[index];
+    for (let index2 = 0; index2 < cores.length; index2 += 1) {
+      cores[index2].style.backgroundColor = pegaCor[index2];
     }
+    console.log(pegaCor);
   }
 }
-salvarBu();
-
+estilo();
 pintarBu();
+salvarBu();
 
 // function boardUser() {
 //   const board = document.getElementById('pixel-board');

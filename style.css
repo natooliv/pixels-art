@@ -83,19 +83,34 @@ h1 {
 }
 
 #pixel-board {
-  display: flex;
-  justify-content: center;
+  display: block;
+    /* max-width: 13%;
+    flex-direction: row;
+    flex-wrap: wrap; */
+}
+
+  /* justify-content: center;
   flex-wrap: wrap;
   align-items: center;
   margin: 20px auto;
   cursor: url(./cursor.png), auto;
-}
-
+*/
+ 
 .pixel {
+  display: inline-block;
   background-color: white;
   width: 40px;
   height: 40px;
   border: 1px solid black;
   margin: 2px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+} 
+.container-pixel{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+}
+.container-button{
+  text-align: center;
 }

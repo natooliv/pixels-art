@@ -1,4 +1,11 @@
 let salveLocal = [];
+const color = document.querySelectorAll('.color');
+const botao = document.getElementById('clear-board');
+const vqv = document.getElementById('generate-board');
+const inputBtn = document.getElementById('board-size');
+// armazenar e pintar as cores de acordo que a cor primeira seja a preta e trocar dinamicamente.
+
+/*---------------------------------Selecionando Cor e Mudando dinamicamente------------------*/
 
 function coresAleatorias() {
   const r = Math.floor(Math.random() * 255);
@@ -66,37 +73,20 @@ function salvarBu() {
 estilo();
 pintarBu();
 salvarBu();
+/*-------------------------------------------------------------Quadrinho------------------------------------*/
 
-// function boardUser() {
-//   const board = document.getElementById('pixel-board');
-//   const input = document.getElementById('board-size');
-//   let inputValue = input.value;
-//   if (inputValue < 5) {
-//     inputValue = 5;
-//   } else if (inputValue > 40) {
-//     inputValue = 40;
-//   } else {
-//     inputValue = input.value;
-//   }
-//   board.style.height = inputValue * 40 + 'px';
-//   board.style.width = inputValue * 40 + 'px';
-//   const matriz = inputValue ** 2;
-//   for (let index = 0; index < matriz; index += 1) {
-//     const divs = document.createElement('div');
-//     divs.classList.add('pixel');
-//     board.appendChild(divs);
-//   }
-// }
-// boardUser();
-
-// function quadrados() {
-//   for (let i = 1; i <= 25; i += 1) {
-//     const pixels = document.querySelector('#pixel-board');
-//     const newDiv = document.createElement('div');
-//     newDiv.classList.add('pixel');
-//     pixels.appendChild(newDiv);
-//     pixels.style.width = '200px';
-//     pixels.style.height = '200px';
-//   }
-// }
-// quadrados();
+function quadradoP(num) {
+   const coluna = num;
+  for (let index = 0; index < coluna; index += 1) {
+    const quadrado = document.getElementById('pixel-board');
+    const fulano = document.createElement('div');
+    fulano.className = 'linha';
+    quadrado.appendChild(fulano);
+    for (let index3 = 0; index3 < coluna; index3 += 1) {
+      const pixelLin = document.createElement('div');
+      pixelLin.className = 'pixel';
+      quadrado.appendChild(pixelLin);
+    }
+  }
+}
+quadradoP(5);

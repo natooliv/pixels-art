@@ -22,7 +22,8 @@ h1 {
   font-family: 'Prstart.ttf',monospace, sans-serif;
   font-size: 40px;
   margin: 50px;
-  color: rgb(14, 8, 0);
+  color : #352b49;
+  box-shadow: #d1cddb;
   
 }
 #color-palette {
@@ -67,17 +68,8 @@ h1 {
 
 #pixel-board {
   display: block;
-    /* max-width: 13%;
-    flex-direction: row;
-    flex-wrap: wrap; */
+   
 }
-
-  /* justify-content: center;
-  flex-wrap: wrap;
-  align-items: center;
-  margin: 20px auto;
-  cursor: url(./cursor.png), auto;
-*/
  
 .pixel {
   display: inline-block;
@@ -87,7 +79,7 @@ h1 {
   border: 1px solid black;
   margin: 2px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
-  padding:
+  
 } 
 .container-pixel{
   width: 100%;
@@ -98,3 +90,16 @@ h1 {
 .container-button{
   text-align: center;
 }
+#button-random-color{
+    padding: 15px;
+   box-sizing: border-box;
+  font-size: 0.7em;
+  background:white;
+  display: block;
+  max-width: 150px;
+  margin: 15px auto;
+  border-color : #ffd1a3;
+  font-family:'Prstart.ttf', sans-serif;
+  color:#352b49
+}
+

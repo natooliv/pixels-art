@@ -78,14 +78,14 @@ salvarBu();
 function quadradoP(num) {
    const coluna = num;
   for (let index = 0; index < coluna; index += 1) {
-    const quadrado = document.getElementById('pixel-board');
-    const fulano = document.createElement('div');
-    fulano.className = 'linha';
-    quadrado.appendChild(fulano);
+    const quadradoPI= document.getElementById('pixel-board');
+    const linhaCol = document.createElement('div');
+    linhaCol.className = 'linha';
+    quadradoPI.appendChild(linhaCol);
     for (let index3 = 0; index3 < coluna; index3 += 1) {
       const pixelLin = document.createElement('div');
       pixelLin.className = 'pixel';
-      quadrado.appendChild(pixelLin);
+       quadradoPI.appendChild(pixelLin);
     }
   }
 }

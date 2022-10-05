@@ -1,6 +1,8 @@
-let salveLocal = [];
+// ---------------------Arrays Vazios---------------------------------/
 
-/*---------------------------------Selecionando Cor e Mudando dinamicamente------------------*/
+let salveLocal = [];
+let salveDesenho = [];
+// ---------------------------------Selecionando Cor Aleatoriamente ------------------/
 
 function coresAleatorias() {
   const r = Math.floor(Math.random() * 255);
@@ -9,6 +11,7 @@ function coresAleatorias() {
 
   return `rgb(${r},${g},${b})`;
 }
+// -------------------Adicione um botão para gerar cores aleatórias para a paleta de cores.----------------------/
 
 function pintarBu() {
   const cores = document.getElementsByClassName('color');
@@ -24,6 +27,7 @@ function pintarBu() {
     salveLocal = [];
   });
 }
+// ----------------------------Os elementos da paleta de cores devem ter borda preta, sólida e com 1 pixel de largura------//
 
 function estilo() {
   const cores = document.getElementsByClassName('color');
@@ -35,6 +39,7 @@ function estilo() {
     cores[index].style.boxShadow = '2px 5px 10px rgba(0, 0, 0, 0.6)';
   }
 }
+// ------------------------------------ A primeira cor na paleta criada no requisito 2 deve ser preta. As demais cores podem ser escolhidas livremente //
 
 function pintQuadro() {
   const cores = document.getElementsByClassName('color');
@@ -46,6 +51,7 @@ function pintQuadro() {
     }
   }
 }
+// - ---------------------------As cores da paleta de cores que foram geradas aleatoriamente devem ser mantidas após recarregar a página-------//
 
 function salvarBu() {
   const cores = document.getElementsByClassName('color');
@@ -66,6 +72,7 @@ function salvarBu() {
   }
 }
 
+// ----------------------------------------------- Adicionando Pixels --------------------------------------------------------//
 
 function quadradoP(num) {
   const coluna = num;
@@ -81,7 +88,10 @@ function quadradoP(num) {
     }
   }
 }
+
 const allcolors = document.getElementsByClassName('color');
+
+// ----------------------------------------------------------Cor selecionada para preenchimento do quadro---------------------------//
 
 function removSele() {
   for (const select of allcolors) {
@@ -93,18 +103,24 @@ function removSele() {
     });
   }
 }
+//
+// -----------------------------O quadro clicado deve ter sua cor alterada para a cor selecionada na paleta de cores ----------------//
 
 function putColor() {
   const allpixels = document.getElementsByClassName('pixel');
   for (let index = 0; index < allpixels.length; index += 1) {
     allpixels[index].addEventListener('click', function (e) {
+      salveDesenho = [];
       const corAtual = document.querySelector('.selected');
       console.log(corAtual);
       const finalColor = window.getComputedStyle(corAtual).backgroundColor;
       e.target.style.backgroundColor = finalColor;
+      salvandoPixel();
     });
   }
 }
+// ------------------------------------------------------Botão de Limpar--------------------------------------------------------//
+
 function limparTudo() {
   const palletCollor = document.querySelectorAll('.pixel');
   palletCollor.forEach((e) => {
@@ -112,6 +128,36 @@ function limparTudo() {
   });
 }
 
+// ---------------------------------------------------- "Pegando" e Salvando o LocalStorage o desenho nos pixels--------------//
+
+function pegandoPixel() {
+  const desenho = document.getElementsByClassName('pixel');
+  const pegaCor = JSON.parse(localStorage.getItem('pixelBoard'));
+  console.log(pegaCor);
+  if (pegaCor === null) {
+    for (let index = 0; index < desenho.length; index += 1) {
+      salveDesenho.push(desenho[index].style.backgroundColor);
+      console.log(desenho[index].style.backgroundColor);
+    }
+    localStorage.setItem('pixelBoard', JSON.stringify(salveDesenho));
+    salveDesenho = [];
+  } else {
+    for (let index2 = 0; index2 < desenho.length; index2 += 1) {
+      desenho[index2].style.backgroundColor = pegaCor[index2];
+    }
+    console.log(pegaCor);
+  }
+}
+function salvandoPixel() {
+  const salvaDesenho = document.getElementsByClassName('pixel');
+  for (let index = 0; index < salvaDesenho.length; index += 1) {
+    salveDesenho.push(salvaDesenho[index].style.backgroundColor);
+    console.log(salvaDesenho[index].style.backgroundColor);
+  }
+  localStorage.setItem('pixelBoard', JSON.stringify(salveDesenho));
+}
+// Lembrando que a "salvandoPixel" foi declarada dentro onde tem os clicks de alteração de cores dentro dos pixels, assim,  captura e  salva no localStorage -----------
+// Chamamento de funções:
 estilo();
 pintarBu();
 salvarBu();
@@ -119,3 +165,11 @@ quadradoP(5);
 removSele();
 putColor();
 limparTudo();
+pegandoPixel();
+// /*Referencias usadas:
+// https://docs.ctjs.rocks/pt_BR/localstorage.html;
+// https://developer.mozilla.org/pt-BR/docs/Learn/JavaScript/Building_blocks/Events
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse#:~:text=Description-,JSON.parse(),object%20before%20it%20is%20returned.
+// https://www.w3schools.com/jsref/jsref_foreach.asp
+// https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify
+// Ajuda no zoom do Ayllan Summer, Monitoria foi de grande valia. 

@@ -14,27 +14,27 @@
       <h1 id="title">Paleta de Cores</h1>
 
       <section id="color-palette">
-        <div id="colorBlack" class="color selected"></div>
-          <div id="colorRed" class="color"></div>
-          <div id="colorGreen" class="color"></div>
-          <div id="colorBlue" class="color"></div>
+        <div id="colorBlack" class="color selected" style="background-color:black"></div>
+          <div id="colorRed" class="color" style="background-color:red"></div>
+          <div id="colorGreen" class="color" style="background-color: green"></div>
+          <div id="colorBlue" class="color" style="background-color: blue ;"></div>
         </section>
       </section>
     </header>
     <div id="board"> 
-        <input type="number" min="1" id="board-size">
+        <input type="number" min="1" max="40" id="board-size">
       </div>
 
       <section id="container-button">
-        
-      <button id="button-random-color"> gCores aleatorias</button>
+      <button id="button-random-color">Cores aleatórias</button>
       </section>
-      
-     <section id="pixel-board"></section>
 
-  
+       <section id="pixel-board" class="pixel"></section>
+       
+       
+      </section>
 
-    </main>
+      </main>
     <script src="./script.js"></script>
   </body>
 </html>

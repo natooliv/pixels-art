@@ -65,9 +65,7 @@ function salvarBu() {
     console.log(pegaCor);
   }
 }
-estilo();
-pintarBu();
-salvarBu();
+
 
 function quadradoP(num) {
   const coluna = num;

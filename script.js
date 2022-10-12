@@ -11,6 +11,72 @@ function coresAleatorias() {
 
   return `rgb(${r},${g},${b})`;
 }
+// --------------------------------------------------------------Criando bottão para o tamanho dos pixels dinamicamente -------------/
+function createButton() {
+  const boardDiv = document.getElementById('board');
+  const button = document.createElement('button');
+  button.id = 'generate-board';
+  button.innerText = 'VQV';
+}
+function boardUser() {
+  const board = document.getElementById('pixel-board');
+  const input = document.getElementById('board-size');
+
+  let inputValue = input.value;
+  if (!inputValue) return alert('Board inválido!');
+  if (inputValue < 5) {
+    deletaBord();
+    inputValue = 5;
+    localStorage.setItem('boardSize', inputValue);
+  } else if (inputValue > 50) {
+    deletaBord();
+    inputValue = 50;
+    localStorage.setItem('boardSize', inputValue);
+  } else if (inputValue >= 5 || inputValue <= 50) {
+    deletaBord();
+    inputValue = input.value;
+    localStorage.setItem('boardSize', inputValue);
+  }
+
+  board.style.height = inputValue * 44 + 'px';
+  board.style.width = inputValue * 44 + 'px';
+  const matriz = inputValue ** 2;
+  for (let index = 0; index < matriz; index += 1) {
+    const divs = document.createElement('div');
+    divs.classList.add('pixel');
+    board.appendChild(divs);
+  }
+  putColor();
+}
+function storgeI() {
+  const board = document.getElementById('pixel-board');
+  const inputValue = localStorage.getItem('boardSize');
+  if (inputValue !== null) {
+    board.style.height = inputValue * 44 + 'px';
+    board.style.width = inputValue * 44 + 'px';
+    const matriz = inputValue ** 2;
+    for (let index = 0; index < matriz; index += 1) {
+      const divs = document.createElement('div');
+      divs.classList.add('pixel');
+      board.appendChild(divs);
+    }
+    putColor();
+  } else {
+    quadradoP(5);
+    putColor();
+  }
+}
+
+function chamaEvento() {
+  const evento = document.getElementById('generate-board');
+  evento.addEventListener('click', boardUser);
+}
+
+function deletaBord() {
+  const del = document.getElementById('pixel-board');
+  del.innerHTML = '';
+}
+
 // -------------------Adicione um botão para gerar cores aleatórias para a paleta de cores.----------------------/
 
 function pintarBu() {
@@ -89,10 +155,8 @@ function quadradoP(num) {
   }
 }
 
-const allcolors = document.getElementsByClassName('color');
-
 // ----------------------------------------------------------Cor selecionada para preenchimento do quadro---------------------------//
-
+const allcolors = document.getElementsByClassName('color');
 function removSele() {
   for (const select of allcolors) {
     select.addEventListener('click', function (event) {
@@ -156,15 +220,17 @@ function salvandoPixel() {
   }
   localStorage.setItem('pixelBoard', JSON.stringify(salveDesenho));
 }
+
 // Lembrando que a "salvandoPixel" foi declarada dentro onde tem os clicks de alteração de cores dentro dos pixels, assim,  captura e  salva no localStorage -----------
 // Chamamento de funções:
 estilo();
 pintarBu();
 salvarBu();
-quadradoP(5);
 removSele();
+createButton();
+chamaEvento();
+storgeI();
 putColor();
-limparTudo();
 pegandoPixel();
 // /*Referencias usadas:
 // https://docs.ctjs.rocks/pt_BR/localstorage.html;
@@ -172,4 +238,4 @@ pegandoPixel();
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse#:~:text=Description-,JSON.parse(),object%20before%20it%20is%20returned.
 // https://www.w3schools.com/jsref/jsref_foreach.asp
 // https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify
-// Ajuda no zoom do Ayllan Summer, Monitoria foi de grande valia. 
+// Ajuda no zoom do Ayllan Summer, Monitoria foi de grande valia.
